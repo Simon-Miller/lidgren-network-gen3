@@ -23,6 +23,9 @@ namespace Lidgren.Network
 
 		public static double Now { get { return (double)(Stopwatch.GetTimestamp() - s_timeInitialized) * s_dInvFreq; } }
 
+		/// <summary>
+		/// Find an available network card (interface) that is enabled, and supports IPv4 communications, and has a freely available to use.
+		/// </summary>
 		private static NetworkInterface GetNetworkInterface()
 		{
 			var computerProperties = IPGlobalProperties.GetIPGlobalProperties();
@@ -70,6 +73,9 @@ namespace Lidgren.Network
 			return ni.GetPhysicalAddress().GetAddressBytes();
 		}
 
+		/// <summary>
+		/// Calculates your ip address for broadcasting to the network/internet.
+		/// </summary>
 		public static IPAddress GetBroadcastAddress()
 		{
 			var ni = GetNetworkInterface();
